@@ -42,32 +42,31 @@ off = Solid(pixels, BLACK)
 color_cycle_rainbow = ColorCycle(pixels, 0.5, RAINBOW)
 
 animations = [
-    solid_white, solid_red, solid_green, solid_blue,
-    rainbow,
-    chase_white, chase_rainbow,
-    color_cycle_rainbow,
-    off
+  solid_white, solid_red, solid_green, solid_blue,
+  rainbow,
+  chase_white, chase_rainbow,
+  color_cycle_rainbow,
+  off
 ]
 
 changed = True
 
 while True:
-    if changed:
-        print(
-            f'Displaying index {counter} with brightness {pixels.brightness}...')
-        changed = False
-    button.update()
-    if button.rose:
-        counter = (counter + 1) % len(animations)
-        changed = True
-        if counter == 0:
-            # All White
-            pixels.brightness = 0.1
-        elif counter == 8:
-            # Off
-            pixels.brightness = 0
-        else:
-            # Normal
-            pixels.brightness = 0.25
+  if changed:
+    print(f'Displaying index {counter} with brightness {pixels.brightness}...')
+    changed = False
+  button.update()
+  if button.rose:
+    counter = (counter + 1) % len(animations)
+    changed = True
+    if counter == 0:
+      # All White
+      pixels.brightness = 0.1
+    elif counter == 8:
+      # Off
+      pixels.brightness = 0
+    else:
+      # Normal
+      pixels.brightness = 0.25
 
-    animations[counter].animate()
+  animations[counter].animate()
